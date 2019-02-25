@@ -1,11 +1,12 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SharesSharing21 extends  Thread {
 
     HashSet<Character> containingChars;
-    static HashSet<String> testedCombinations;
+    public static HashSet<String> testedCombinations;
     Set<String> combinations;
 
     int start;
@@ -21,9 +22,10 @@ public class SharesSharing21 extends  Thread {
     }
 
     public void run(){
-        testedCombinations = new HashSet<>();
         for (BigInteger i = BigInteger.valueOf(start); i.compareTo(BigInteger.valueOf(stop)) < 0; i = i.add(BigInteger.valueOf(intervall))) {
+            System.out.println(threadID + " "+ i);
             if(checkPrime(i)&& !testedCombinations.contains(i.toString())){
+                System.out.println(threadID + " "+ i);
                 combinations = generatePerm(i.toString());
                 BigInteger p = i.multiply(i);
                 addToSet(p);
@@ -37,6 +39,7 @@ public class SharesSharing21 extends  Thread {
                 }
                 containingChars = null;
                 testedCombinations.addAll(combinations);
+                testedCombinations.add(i.toString());
                 combinations = null;
             }
 
