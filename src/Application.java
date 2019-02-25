@@ -3,7 +3,6 @@ import java.util.HashSet;
 public class Application {
 
     public static void main(String[] args) {
-        SharesSharing21.testedCombinations = new HashSet<>();
        int cores = Runtime.getRuntime().availableProcessors();
         SharesSharing21[] threadsArray = new SharesSharing21[cores];
         int start= 0;

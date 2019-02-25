@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ApplicationTest {
     @Test
     public void TestNumber(){
-        SharesSharing21 s = new SharesSharing21(1, 77900, 80000,1);
+        SharesSharing21.testedCombinations = new HashSet<>();
+        SharesSharing21 s = new SharesSharing21(1, 0, 800000,1);
         s.start();
         try {
             s.join();
@@ -20,7 +21,6 @@ class ApplicationTest {
     }
     @Test
     public void TestPerformance(){
-        SharesSharing21.testedCombinations = new HashSet<>();
         long startTime;
         long stopTime;
         int start =0;

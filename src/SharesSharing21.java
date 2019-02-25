@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,9 +24,7 @@ public class SharesSharing21 extends  Thread {
 
     public void run(){
         for (BigInteger i = BigInteger.valueOf(start); i.compareTo(BigInteger.valueOf(stop)) < 0; i = i.add(BigInteger.valueOf(intervall))) {
-            System.out.println(threadID + " "+ i);
-            if(checkPrime(i)&& !testedCombinations.contains(i.toString())){
-                System.out.println(threadID + " "+ i);
+            if(checkPrime(i)){
                 combinations = generatePerm(i.toString());
                 BigInteger p = i.multiply(i);
                 addToSet(p);
@@ -33,13 +32,11 @@ public class SharesSharing21 extends  Thread {
                     if(checkPrime(new BigInteger(s))){
                         BigInteger q = new BigInteger(s).multiply(new BigInteger(s));
                         if(checkForDuplicates(q)){
-                            System.out.println("Thread"+threadID+" hat das Zahlenpaar "+s+" und  "+ i+ " gefunden!");
+                            System.out.println("Thread"+threadID+" hat das Zahlenpaar "+i+" und  "+ s+ " gefunden!");
                         }
                     }
                 }
                 containingChars = null;
-                testedCombinations.addAll(combinations);
-                testedCombinations.add(i.toString());
                 combinations = null;
             }
 
