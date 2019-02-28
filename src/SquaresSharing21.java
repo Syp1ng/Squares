@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SharesSharing21 extends  Thread {
+public class SquaresSharing21 extends  Thread {
 
     HashSet<Character> containingChars;
     Set<String> combinations;
@@ -21,7 +21,7 @@ public class SharesSharing21 extends  Thread {
     int interval;
     int threadID;
 
-    public SharesSharing21(int threadID, int start, int stop, int interval){
+    public SquaresSharing21(int threadID, int start, int stop, int interval){
         this.start= start;
         this.stop = stop;
         this.interval = interval;

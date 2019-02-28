@@ -1,13 +1,11 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-
 
 class ApplicationTest {
     @Test
     public void TestNumber(){
-        SharesSharing21 s = new SharesSharing21(1, 779000, 780000,1);
+        SquaresSharing21 s = new SquaresSharing21(1, 779000, 780000,1);
         s.start();
         try {
             s.join();
@@ -16,7 +14,7 @@ class ApplicationTest {
             e.printStackTrace();
         }
         //Example Number
-        Assertions.assertTrue(SharesSharing21.getResult().contains("779131/913177")||SharesSharing21.getResult().contains("913177/779131"));
+        Assertions.assertTrue(SquaresSharing21.getResult().contains("779131/913177")|| SquaresSharing21.getResult().contains("913177/779131"));
 
     }
     @Test
@@ -26,7 +24,7 @@ class ApplicationTest {
         int start =0;
         int stop = 780000;
         startTime= System.currentTimeMillis();
-        SharesSharing21 s = new SharesSharing21(1, start, stop,1);
+        SquaresSharing21 s = new SquaresSharing21(1, start, stop,1);
         s.start();
         try {
             s.join();
@@ -39,16 +37,16 @@ class ApplicationTest {
 
         startTime = System.currentTimeMillis();
         int cores = Runtime.getRuntime().availableProcessors();
-        SharesSharing21[] threadsArray = new SharesSharing21[cores];
+        SquaresSharing21[] threadsArray = new SquaresSharing21[cores];
         for(int i=0;i<cores;i++){
-            threadsArray[i] = new SharesSharing21(i+1,start,stop,cores);
+            threadsArray[i] = new SquaresSharing21(i+1,start,stop,cores);
             start++;
         }
-        for(SharesSharing21 t:threadsArray){
+        for(SquaresSharing21 t:threadsArray){
             t.start();
         }
         try{
-            for (SharesSharing21 t:threadsArray)t.join();
+            for (SquaresSharing21 t:threadsArray)t.join();
         }
         catch (InterruptedException e) {
             e.printStackTrace();
