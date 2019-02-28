@@ -6,7 +6,7 @@ public class Application {
        int cores = Runtime.getRuntime().availableProcessors();
         SharesSharing21[] threadsArray = new SharesSharing21[cores];
         int start= 0;
-        int stop= 779140;
+        int stop= 780000;
         for(int i=0;i<cores;i++){
             threadsArray[i] = new SharesSharing21(i+1,start,stop,cores);
             start++;

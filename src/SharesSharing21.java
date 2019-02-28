@@ -1,29 +1,35 @@
 import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SharesSharing21 extends  Thread {
 
     HashSet<Character> containingChars;
-    public static HashSet<String> testedCombinations;
     Set<String> combinations;
+
+    public static ArrayList<String> getResult() {
+        return result;
+    }
+
+    static ArrayList<String> result = new ArrayList<>();
 
     int start;
     int stop;
-    int intervall;
+    int interval;
     int threadID;
 
-    public SharesSharing21(int threadID, int start, int stop, int intervall){
+    public SharesSharing21(int threadID, int start, int stop, int interval){
         this.start= start;
         this.stop = stop;
-        this.intervall = intervall;
+        this.interval = interval;
         this.threadID = threadID;
     }
 
     public void run(){
-        for (BigInteger i = BigInteger.valueOf(start); i.compareTo(BigInteger.valueOf(stop)) < 0; i = i.add(BigInteger.valueOf(intervall))) {
+        for (BigInteger i = BigInteger.valueOf(start); i.compareTo(BigInteger.valueOf(stop)) < 0; i = i.add(BigInteger.valueOf(interval))) {
             if(checkPrime(i)){
                 combinations = generatePerm(i.toString());
                 BigInteger p = i.multiply(i);
@@ -32,7 +38,10 @@ public class SharesSharing21 extends  Thread {
                     if(checkPrime(new BigInteger(s))){
                         BigInteger q = new BigInteger(s).multiply(new BigInteger(s));
                         if(checkForDuplicates(q)){
-                            System.out.println("Thread"+threadID+" hat das Zahlenpaar "+i+" und  "+ s+ " gefunden!");
+                            if(!result.contains(i.toString()+"/"+s)&&!result.contains(s+"/"+i.toString())) {
+                                result.add(i.toString() + "/" + s);
+                                System.out.println("Thread "+ threadID +" hat das Zahlenpaar " +i.toString() +" und " + s +" gefunden");
+                            }
                         }
                     }
                 }

@@ -3,13 +3,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest {
     @Test
     public void TestNumber(){
-        SharesSharing21.testedCombinations = new HashSet<>();
-        SharesSharing21 s = new SharesSharing21(1, 0, 800000,1);
+        SharesSharing21 s = new SharesSharing21(1, 779000, 780000,1);
         s.start();
         try {
             s.join();
@@ -17,6 +15,8 @@ class ApplicationTest {
         catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //Example Number
+        Assertions.assertTrue(SharesSharing21.getResult().contains("779131/913177")||SharesSharing21.getResult().contains("913177/779131"));
 
     }
     @Test
@@ -24,7 +24,7 @@ class ApplicationTest {
         long startTime;
         long stopTime;
         int start =0;
-        int stop = 80000;
+        int stop = 780000;
         startTime= System.currentTimeMillis();
         SharesSharing21 s = new SharesSharing21(1, start, stop,1);
         s.start();
@@ -55,7 +55,7 @@ class ApplicationTest {
         }
         stopTime=System.currentTimeMillis();
         long test2 = stopTime-startTime;
-        System.out.println(test1+"/"+test2);
+        System.out.println(test1+"/"+test2 +" ms");
 
         Assertions.assertTrue(test1>test2);
 
