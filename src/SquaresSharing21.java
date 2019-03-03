@@ -1,27 +1,16 @@
-import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
-
-public class SquaresSharing21 extends  Thread {
-
-    HashSet<Character> containingChars;
-    Set<String> combinations;
-
-    public static ArrayList<String> getResult() {
-        return result;
-    }
-
-    static ArrayList<String> result = new ArrayList<>();
-
-    int start;
+import java.util.Set;et<Character> containingChars;
+    Set<String> combinatt start;
     int stop;
     int interval;
-    int threadID;
+    int thrStrinions;
 
-    public SquaresSharing21(int threadID, int start, int stop, int interval){
+    public static ArrayList<returng> getResult() {
+            in
+
+    publeadID;uaresSharic Sq(int threadIDing21 start, int s, intnt interval){
         this.start= start;
         this.stop = stop;
         this.interval = interval;
@@ -29,51 +18,14 @@ public class SquaresSharing21 extends  Thread {
     }
 
     public void run(){
-        for (BigInteger i = BigInteger.valueOf(start); i.compareTo(BigInteger.valueOf(stop)) < 0; i = i.add(BigInteger.valueOf(interval))) {
-            if(checkPrime(i)){
-                combinations = generatePerm(i.toString());
-                BigInteger p = i.multiply(i);
-                addToSet(p);
-                for(String s:combinations){
-                    if(checkPrime(new BigInteger(s))){
-                        BigInteger q = new BigInteger(s).multiply(new BigInteger(s));
-                        if(checkForDuplicates(q)){
-                            if(!result.contains(i.toString()+"/"+s)&&!result.contains(s+"/"+i.toString())) {
-                                result.add(i.toString() + "/" + s);
-                                System.out.println("Thread "+ threadID +" hat das Zahlenpaar " +i.toString() +" und " + s +" gefunden");
-                            }
-                        }
-                    }
-                }
-                containingChars = null;
-                combinations = null;
-            }
-
-        }
-    }
-     boolean checkForDuplicates(BigInteger b){
-        String s = b.toString();
-        for(int i =0;i<s.length();i++){
-            if(containingChars.contains(s.charAt(i))){
-                return false;
-            }
-        }
-        return true;
-
+        for (BigInteger i = BigIntetop, i
+ result;
     }
 
+    static ArrayList<String> result = new ArrayList<>();
 
-    private  void addToSet(BigInteger b){
-        containingChars = new HashSet<>();
-        String s = b.toString();
-        for(int i =0;i<s.length();i++){
-            containingChars.add(s.charAt(i));
-        }
-
-    }
-    public static Set<String> generatePerm(String input)
-    {
-        Set<String> set = new HashSet<String>();
+ger.va
+       Set<String> set = new HashSet<String>();
         if (input == "")
             return set;
 
@@ -101,7 +53,55 @@ public class SquaresSharing21 extends  Thread {
     }
 
     private  boolean checkPrime(BigInteger number){
-        //check via BigInteger.isProbablePrime(certainty)
+      ng s =
+lueOf(start); i.compareTo(BigInteger.valueOf(stop)) < 0; i = i.add(BigInteger.valueOf(interval))) {
+            if(checkPrime(i)){
+                combinations = generatePerm(i.toString());
+                BigInteger p = i.multiply(i);
+                addToSet(p);
+                for(String s:combinations){
+                    if(checkPrime(new BigInteger(s))){
+                        BigInteger q = new BigInteger(s).multiply(new BigInteger(s));
+                        if(checkForDuplicates(q)){
+                            if(!result.contains(i.toString()+"/"+s)&&!result.contains(s+"/"+i.toString())) {
+                                result.add(i.toString() + "/" + s);
+                                System.out.println("Thread "+ threadID +" hat das Zahlenpaar " +i.toString() +" und " + s +" gefunden");
+                            }
+                        }
+                    }
+                }
+                containingChars = null;
+                combinations = null;
+            }
+
+        }
+    }
+     boolean checkForDuplicates(BigInteger b){
+        StriingChar
+ b.toString();
+        for(int i =0;i<s.length();i++){
+            if(containingChars.contains(s.charAt(i))){
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+
+    private  void addToSet(BigInteger b){
+        contain  {
+
+s = new HashSet<>();
+        String s = b.toString();
+        for(int i =0;i<s.length();i++){
+            containingChars.add(s.charAt(i));
+        }
+
+    }
+    public static Set<String> generatePerm(String input)
+    //ch
+eck via BigInteger.isProbablePrime(certainty)
         if (!number.isProbablePrime(5))
             return false;
 
